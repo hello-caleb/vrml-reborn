@@ -5,7 +5,6 @@ export function parseVRML(vrmlText: string): SceneData {
   
   // Basic VRML parsing - extract Transform nodes with Box geometry
   const transformRegex = /Transform\s*{[^}]*translation\s+([\d\.\-\s]+)[^}]*children\s*\[[^}]*Box/g
-  const colorRegex = /Material\s*{[^}]*diffuseColor\s+([\d\.\s]+)/g
   
   let match
   while ((match = transformRegex.exec(vrmlText)) !== null) {
