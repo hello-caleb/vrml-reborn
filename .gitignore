@@ -5,3 +5,4 @@ dist
 
 # Keep .kiro directory for hackathon submission
 # !.kiro/
+.vercel

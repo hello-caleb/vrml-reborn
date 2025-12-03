@@ -7,6 +7,48 @@ interface VRMLSceneProps {
 }
 
 export default function VRMLScene({ data }: VRMLSceneProps) {
+  const getGeometryProps = (shape: SceneData['shapes'][0]) => {
+    const props: any = {
+      position: `${shape.position[0]} ${shape.position[1]} ${shape.position[2]}`,
+      color: shape.color || '#4CC3D9'
+    }
+    
+    if (shape.rotation) {
+      props.rotation = `${shape.rotation[0]} ${shape.rotation[1]} ${shape.rotation[2]}`
+    }
+    
+    if (shape.scale) {
+      props.scale = `${shape.scale[0]} ${shape.scale[1]} ${shape.scale[2]}`
+    }
+    
+    switch (shape.geometry) {
+      case 'box':
+        props.primitive = 'a-box'
+        if (shape.size) {
+          props.width = shape.size[0]
+          props.height = shape.size[1]
+          props.depth = shape.size[2]
+        }
+        break
+      case 'sphere':
+        props.primitive = 'a-sphere'
+        if (shape.radius) props.radius = shape.radius
+        break
+      case 'cylinder':
+        props.primitive = 'a-cylinder'
+        if (shape.radius) props.radius = shape.radius
+        if (shape.height) props.height = shape.height
+        break
+      case 'cone':
+        props.primitive = 'a-cone'
+        if (shape.radius) props.radiusBottom = shape.radius
+        if (shape.height) props.height = shape.height
+        break
+    }
+    
+    return props
+  }
+
   return (
     <div className="scene-container">
       <Scene vr-mode-ui="enabled: true">
@@ -14,12 +56,7 @@ export default function VRMLScene({ data }: VRMLSceneProps) {
         <Entity primitive="a-camera" position="0 1.6 3" />
         
         {data.shapes.map((shape, i) => (
-          <Entity
-            key={i}
-            primitive="a-box"
-            position={`${shape.position[0]} ${shape.position[1]} ${shape.position[2]}`}
-            color={shape.color || '#4CC3D9'}
-          />
+          <Entity key={i} {...getGeometryProps(shape)} />
         ))}
       </Scene>
     </div>
