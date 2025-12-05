@@ -1,0 +1,98 @@
+#VRML V2.0 utf8
+# Simple Halloween Scene
+
+# Left pumpkin
+Transform {
+  translation -2 0.4 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.4 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.5 0.1
+          emissiveColor 0.8 0.3 0
+        }
+      }
+    }
+  ]
+}
+
+# Center pumpkin (larger)
+Transform {
+  translation 0 0.5 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.5 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0.1
+          emissiveColor 0.9 0.4 0
+        }
+      }
+    }
+  ]
+}
+
+# Right pumpkin
+Transform {
+  translation 2 0.4 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.4 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.5 0.1
+          emissiveColor 0.8 0.3 0
+        }
+      }
+    }
+  ]
+}
+
+# Ghost (semi-transparent, floating)
+Transform {
+  translation 0 2 -2
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.9 0.9 1
+          emissiveColor 0.3 0.3 0.4
+          transparency 0.5
+        }
+      }
+    }
+  ]
+}
+
+# Ground
+Transform {
+  translation 0 -0.1 0
+  children [
+    Shape {
+      geometry Box { size 10 0.2 10 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.15 0.2 0.1
+        }
+      }
+    }
+  ]
+}
+
+# Moon (far back)
+Transform {
+  translation -4 6 -10
+  children [
+    Shape {
+      geometry Sphere { radius 1.2 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.9 0.9 0.7
+          emissiveColor 0.7 0.7 0.5
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,586 @@
+#VRML V2.0 utf8
+# Spooky Graveyard Scene - VRML Reborn Demo
+# Showcases: hierarchical transforms, materials, emissive colors, transparency
+# Created for Kiroween Hackathon 2025
+
+# Background - Dark spooky sky
+Background {
+  skyColor [0.05 0.05 0.15]
+}
+
+# Ground plane - dead grass
+Transform {
+  translation 0 -0.1 0
+  children [
+    Shape {
+      geometry Box {
+        size 20 0.2 20
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.25 0.1  # dead grass green-brown
+        }
+      }
+    }
+  ]
+}
+
+# === GRAVEYARD FENCE (front) ===
+Transform {
+  translation 0 0 8
+  children [
+    # Fence post 1
+    Transform {
+      translation -6 0.5 0
+      children [
+        Shape {
+          geometry Box { size 0.2 1 0.2 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Fence post 2
+    Transform {
+      translation -3 0.5 0
+      children [
+        Shape {
+          geometry Box { size 0.2 1 0.2 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Fence post 3
+    Transform {
+      translation 0 0.5 0
+      children [
+        Shape {
+          geometry Box { size 0.2 1 0.2 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Fence post 4
+    Transform {
+      translation 3 0.5 0
+      children [
+        Shape {
+          geometry Box { size 0.2 1 0.2 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Fence post 5
+    Transform {
+      translation 6 0.5 0
+      children [
+        Shape {
+          geometry Box { size 0.2 1 0.2 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Horizontal fence rail (top)
+    Transform {
+      translation 0 0.8 0
+      children [
+        Shape {
+          geometry Box { size 12.5 0.1 0.1 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3 0.3 0.3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === GRAVESTONE CLUSTER 1 (left side) ===
+Transform {
+  translation -4 0 2
+  children [
+    # Tall gravestone
+    Shape {
+      geometry Box {
+        size 1.2 2 0.3
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.5 0.5 0.55  # weathered stone
+        }
+      }
+    }
+    # Cross on top
+    Transform {
+      translation 0 1.2 0
+      children [
+        Shape {
+          geometry Box { size 0.6 0.1 0.1 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.4 0.4 0.45
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === GRAVESTONE CLUSTER 2 (center-left) ===
+Transform {
+  translation -2 0 0
+  rotation 0 1 0 0.3
+  children [
+    # Medium gravestone (tilted for spooky effect)
+    Shape {
+      geometry Box {
+        size 1 1.5 0.25
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.45 0.45 0.5
+        }
+      }
+    }
+  ]
+}
+
+# === GRAVESTONE CLUSTER 3 (center-right) ===
+Transform {
+  translation 3 0 1
+  rotation 0 1 0 -0.2
+  children [
+    # Round-topped gravestone
+    Group {
+      children [
+        # Base
+        Transform {
+          translation 0 0.4 0
+          children [
+            Shape {
+              geometry Box { size 1 0.8 0.2 }
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.4 0.4 0.45
+                }
+              }
+            }
+          ]
+        }
+        # Rounded top
+        Transform {
+          translation 0 0.9 0
+          children [
+            Shape {
+              geometry Sphere { radius 0.3 }
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0.4 0.4 0.45
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+# === GRAVESTONE CLUSTER 4 (right side) ===
+Transform {
+  translation 5 0 -1
+  children [
+    # Short, wide gravestone
+    Shape {
+      geometry Box {
+        size 1.5 1 0.3
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.55 0.55 0.6
+        }
+      }
+    }
+  ]
+}
+
+# === SPOOKY TREE (back left) ===
+Transform {
+  translation -6 0 -3
+  children [
+    # Tree trunk
+    Transform {
+      translation 0 1.5 0
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.3
+            height 3
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.15 0.1  # dark bark
+            }
+          }
+        }
+      ]
+    }
+    # Branch 1 (left)
+    Transform {
+      translation -0.8 2.5 0
+      rotation 0 0 1 0.8
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.15
+            height 1.5
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.15 0.1
+            }
+          }
+        }
+      ]
+    }
+    # Branch 2 (right)
+    Transform {
+      translation 0.8 2.8 0
+      rotation 0 0 1 -0.6
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.15
+            height 1.5
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.15 0.1
+            }
+          }
+        }
+      ]
+    }
+    # Branch 3 (forward)
+    Transform {
+      translation 0 2.6 0.6
+      rotation 1 0 0 0.5
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.12
+            height 1.2
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.15 0.1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === JACK-O-LANTERN 1 (glowing pumpkin) ===
+Transform {
+  translation 1 0.3 3
+  children [
+    Shape {
+      geometry Sphere {
+        radius 0.4
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0.1
+          emissiveColor 0.8 0.4 0  # GLOWING orange
+        }
+      }
+    }
+    # Pumpkin stem
+    Transform {
+      translation 0 0.45 0
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.08
+            height 0.15
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.4 0.1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === JACK-O-LANTERN 2 (by fence) ===
+Transform {
+  translation -1.5 0.3 5
+  children [
+    Shape {
+      geometry Sphere {
+        radius 0.35
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0.1
+          emissiveColor 0.7 0.3 0  # GLOWING
+        }
+      }
+    }
+    # Stem
+    Transform {
+      translation 0 0.4 0
+      children [
+        Shape {
+          geometry Cylinder {
+            radius 0.07
+            height 0.12
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.2 0.4 0.1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === GHOST (semi-transparent) ===
+Transform {
+  translation 2.5 1.2 -2
+  children [
+    # Ghost body
+    Shape {
+      geometry Sphere {
+        radius 0.5
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.9 0.9 1
+          transparency 0.6  # Semi-transparent
+          emissiveColor 0.2 0.2 0.3  # Faint glow
+        }
+      }
+    }
+    # Ghost tail (elongated)
+    Transform {
+      translation 0 -0.6 0
+      children [
+        Shape {
+          geometry Cone {
+            bottomRadius 0.3
+            height 0.8
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.9 0.9 1
+              transparency 0.65
+              emissiveColor 0.15 0.15 0.25
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === HAUNTED CRYPT (back center) ===
+Transform {
+  translation 0 0 -5
+  children [
+    # Crypt base
+    Shape {
+      geometry Box {
+        size 3 2 2
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 0.3 0.35
+        }
+      }
+    }
+    # Crypt roof
+    Transform {
+      translation 0 1.3 0
+      children [
+        Shape {
+          geometry Box {
+            size 3.2 0.4 2.2
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.25 0.25 0.3
+            }
+          }
+        }
+      ]
+    }
+    # Door (darker inset)
+    Transform {
+      translation 0 0.1 1.05
+      children [
+        Shape {
+          geometry Box {
+            size 0.8 1.4 0.1
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.1 0.1 0.12
+            }
+          }
+        }
+      ]
+    }
+    # Eerie glow from door
+    Transform {
+      translation 0 0.4 1.15
+      children [
+        Shape {
+          geometry Sphere {
+            radius 0.2
+          }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.5 1 0.5
+              emissiveColor 0.3 0.8 0.3  # Eerie green glow
+              transparency 0.5
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# === SPOOKY FOG PATCHES (transparent low boxes) ===
+Transform {
+  translation -3 0.1 1
+  children [
+    Shape {
+      geometry Box {
+        size 2 0.3 2
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.7 0.7 0.8
+          transparency 0.85  # Very transparent "fog"
+        }
+      }
+    }
+  ]
+}
+
+Transform {
+  translation 4 0.1 -1
+  children [
+    Shape {
+      geometry Box {
+        size 2.5 0.3 2.5
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.7 0.7 0.8
+          transparency 0.85
+        }
+      }
+    }
+  ]
+}
+
+# === MOON (back, high) ===
+Transform {
+  translation -3 8 -15
+  children [
+    Shape {
+      geometry Sphere {
+        radius 1.5
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.9 0.9 0.7
+          emissiveColor 0.6 0.6 0.4  # Glowing moon
+        }
+      }
+    }
+  ]
+}
+
+# === SCATTERED ROCKS ===
+Transform {
+  translation 2.5 0.15 4
+  children [
+    Shape {
+      geometry Box {
+        size 0.4 0.3 0.5
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.35 0.35 0.4
+        }
+      }
+    }
+  ]
+}
+
+Transform {
+  translation -3.5 0.2 -0.5
+  rotation 0 1 0 0.7
+  children [
+    Shape {
+      geometry Box {
+        size 0.5 0.4 0.6
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 0.3 0.35
+        }
+      }
+    }
+  ]
+}
+
+Transform {
+  translation 5.5 0.18 2
+  rotation 0 1 0 -0.5
+  children [
+    Shape {
+      geometry Box {
+        size 0.35 0.35 0.4
+      }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.32 0.32 0.37
+        }
+      }
+    }
+  ]
+}

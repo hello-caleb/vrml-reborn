@@ -1,0 +1,121 @@
+#VRML V2.0 utf8
+
+# A spooky Graveyard Scene
+WorldInfo {
+  title "Spooky Graveyard"
+}
+
+# 1. Fog/Mist (VisibilitySensor and Fog node)
+Viewpoint {
+  position 0 1.5 10
+  description "Entrance View"
+}
+
+NavigationInfo {
+  type ["EXAMINE", "WALK", "ANY"]
+  headlight FALSE
+  speed 0.5
+}
+
+Background {
+  skyColor [0 0 0] # Black sky for night
+}
+
+Fog {
+  visibilityRange 15.0 # Low visibility for mist
+  color 0.4 0.4 0.5 # Grayish-white mist
+  fogType "EXPONENTIAL"
+}
+
+DirectionalLight {
+  direction -0.5 -1 -0.5
+  intensity 0.1 # Very dim ambient light
+  color 1 1 1
+}
+
+# 2. Ground (Gray/Dirt)
+Shape {
+  appearance Appearance {
+    material Material {
+      diffuseColor 0.2 0.2 0.2
+    }
+  }
+  geometry Box {
+    size 50 0.1 50
+  }
+}
+
+# 3. The Moon (A faint, distant light source)
+PointLight {
+  location 20 20 -20
+  intensity 0.8
+  color 0.7 0.7 0.9 # Bluish-white moon glow
+  radius 50
+}
+
+# DEFINE - Tombstone Shape (Box for simplicity)
+PROTO Tombstone [
+  field SFFloat sizeX 0.6
+  field SFFloat sizeY 1.2
+  field SFFloat sizeZ 0.1
+  field SFVec3f position 0 0 0
+  field SFRotation rotation 0 1 0 0
+]
+{
+  Transform {
+    translation IS position
+    rotation IS rotation
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor 0.5 0.5 0.5
+            specularColor 0 0 0
+          }
+        }
+        geometry Box {
+          size IS sizeX IS sizeY IS sizeZ
+        }
+      }
+    ]
+  }
+}
+
+# 4. Tombstone instances
+Tombstone { position -3 0.6 5 }
+Tombstone { position 3 0.6 3 }
+Tombstone { position -1 0.6 -2 sizeY 0.8 }
+Tombstone { position 5 0.6 -5 rotation 0 1 0 0.5 }
+Tombstone { position 0 0.6 0 sizeX 0.4 sizeY 1.0 }
+
+# DEFINE - Spooky Tree (Simple cylinder/cone structure)
+PROTO SpookyTree [
+  field SFVec3f position 0 0 0
+  field SFFloat height 5.0
+  field SFRotation rotation 0 1 0 0
+]
+{
+  Transform {
+    translation IS position
+    rotation IS rotation
+    children [
+      # Trunk
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor 0.1 0.1 0.1 # Dark bark
+          }
+        }
+        geometry Cylinder {
+          height IS height
+          radius 0.2
+        }
+      }
+    ]
+  }
+}
+
+# 5. Spooky Tree instances
+SpookyTree { position 8 2.5 -8 height 5.0 }
+SpookyTree { position -8 2.5 8 height 6.0 rotation 0 1 0 1.57 }
+SpookyTree { position 10 2.5 0 height 4.0 }

@@ -1,0 +1,44 @@
+#VRML V2.0 utf8
+
+# Simple PROTO example demonstrating field types and IS bindings
+
+PROTO ColoredSphere [
+  field SFColor sphereColor 1 0 0
+  field SFFloat sphereRadius 1.0
+  field SFVec3f spherePosition 0 0 0
+] {
+  Transform {
+    translation IS spherePosition
+    children [
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor IS sphereColor
+          }
+        }
+        geometry Sphere {
+          radius IS sphereRadius
+        }
+      }
+    ]
+  }
+}
+
+# Create three colored spheres using the PROTO
+ColoredSphere {
+  sphereColor 1 0 0
+  sphereRadius 1.5
+  spherePosition -3 0 0
+}
+
+ColoredSphere {
+  sphereColor 0 1 0
+  sphereRadius 1.0
+  spherePosition 0 0 0
+}
+
+ColoredSphere {
+  sphereColor 0 0 1
+  sphereRadius 2.0
+  spherePosition 3 0 0
+}

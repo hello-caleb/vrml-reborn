@@ -7,10 +7,10 @@ interface VRMLSceneProps {
 }
 
 export default function VRMLScene({ data }: VRMLSceneProps) {
+
   const getGeometryProps = (shape: SceneData['shapes'][0]) => {
     const props: any = {
-      position: `${shape.position[0]} ${shape.position[1]} ${shape.position[2]}`,
-      color: shape.color || '#4CC3D9'
+      position: `${shape.position[0]} ${shape.position[1]} ${shape.position[2]}`
     }
     
     if (shape.rotation) {
@@ -21,7 +21,40 @@ export default function VRMLScene({ data }: VRMLSceneProps) {
       props.scale = `${shape.scale[0]} ${shape.scale[1]} ${shape.scale[2]}`
     }
     
+    // Build material properties - always include color
+    const materialProps: string[] = []
+    materialProps.push(`color: ${shape.color || '#4CC3D9'}`)
+    
+    if (shape.emissiveColor) {
+      materialProps.push(`emissive: ${shape.emissiveColor}`)
+      materialProps.push('emissiveIntensity: 1')
+    }
+    
+    if (shape.transparency !== undefined && shape.transparency > 0) {
+      const opacity = 1 - shape.transparency
+      materialProps.push(`opacity: ${opacity}`)
+      materialProps.push('transparent: true')
+    }
+    
+    props.material = materialProps.join('; ')
+    
     switch (shape.geometry) {
+      case 'lines':
+        props.geometry = {
+          primitive: 'vrml-lines',
+          vertices: shape.vertices || [],
+          indices: shape.indices || []
+        }
+        // Override material for lines
+        props.material = 'shader: flat'
+        break
+      case 'mesh':
+        props.geometry = {
+          primitive: 'vrml-mesh',
+          vertices: shape.vertices || [],
+          indices: shape.indices || []
+        }
+        break
       case 'box':
         props.primitive = 'a-box'
         if (shape.size) {
@@ -52,8 +85,8 @@ export default function VRMLScene({ data }: VRMLSceneProps) {
   return (
     <div className="scene-container">
       <Scene vr-mode-ui="enabled: true">
-        <Entity primitive="a-sky" color="#87CEEB" />
-        <Entity primitive="a-camera" position="0 1.6 3" />
+        <Entity primitive="a-sky" color="#1a1a2e" />
+        <Entity primitive="a-camera" position="0 2 10" />
         
         {data.shapes.map((shape, i) => (
           <Entity key={i} {...getGeometryProps(shape)} />

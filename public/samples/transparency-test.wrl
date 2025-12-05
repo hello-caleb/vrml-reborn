@@ -1,0 +1,96 @@
+#VRML V2.0 utf8
+# Transparency Demonstration
+
+# Solid red (back)
+Transform {
+  translation 0 0 -1
+  children [
+    Shape {
+      geometry Sphere { radius 0.8 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.2 0.2
+        }
+      }
+    }
+  ]
+}
+
+# 25% transparent orange
+Transform {
+  translation -0.6 0 -0.5
+  children [
+    Shape {
+      geometry Sphere { radius 0.8 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0.1
+          transparency 0.25
+        }
+      }
+    }
+  ]
+}
+
+# 50% transparent yellow
+Transform {
+  translation 0.6 0 -0.5
+  children [
+    Shape {
+      geometry Sphere { radius 0.8 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0.2
+          transparency 0.5
+        }
+      }
+    }
+  ]
+}
+
+# 75% transparent green
+Transform {
+  translation -0.3 0 0.2
+  children [
+    Shape {
+      geometry Sphere { radius 0.8 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 1 0.2
+          transparency 0.75
+        }
+      }
+    }
+  ]
+}
+
+# 90% transparent blue (front)
+Transform {
+  translation 0.3 0 0.2
+  children [
+    Shape {
+      geometry Sphere { radius 0.8 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.2 1
+          transparency 0.9
+        }
+      }
+    }
+  ]
+}
+
+# Dark background
+Transform {
+  translation 0 0 -3
+  children [
+    Shape {
+      geometry Box { size 6 6 0.1 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.1 0.15
+        }
+      }
+    }
+  ]
+}

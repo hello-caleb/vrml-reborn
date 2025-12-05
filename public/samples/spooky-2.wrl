@@ -1,0 +1,115 @@
+#VRML V2.0 utf8
+# Feature Showcase - Clean Demo
+
+# Title: Basic Shapes
+Transform {
+  translation -6 1 0
+  children [
+    Shape {
+      geometry Box { size 1 1 1 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.3 0.3
+        }
+      }
+    }
+  ]
+}
+
+# Title: Glowing Material
+Transform {
+  translation -3 1 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0.1
+          emissiveColor 0.9 0.5 0
+        }
+      }
+    }
+  ]
+}
+
+# Title: Transparency
+Transform {
+  translation 0 1 0
+  children [
+    Shape {
+      geometry Cylinder { radius 0.5 height 1.5 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 0.6 1
+          transparency 0.5
+        }
+      }
+    }
+  ]
+}
+
+# Title: Rotation
+Transform {
+  translation 3 1 0
+  rotation 1 0 1 0.785
+  children [
+    Shape {
+      geometry Cone { bottomRadius 0.6 height 1.5 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.3 1 0.3
+        }
+      }
+    }
+  ]
+}
+
+# Title: Hierarchy
+Transform {
+  translation 6 1 0
+  children [
+    # Base
+    Transform {
+      translation 0 0 0
+      children [
+        Shape {
+          geometry Box { size 1 0.3 1 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.6 0.4 0.2
+            }
+          }
+        }
+      ]
+    }
+    # Top
+    Transform {
+      translation 0 0.5 0
+      children [
+        Shape {
+          geometry Sphere { radius 0.4 }
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.8 0.6 0.3
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+# Ground plane
+Transform {
+  translation 0 -0.5 0
+  children [
+    Shape {
+      geometry Box { size 20 0.1 10 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.2 0.2 0.25
+        }
+      }
+    }
+  ]
+}

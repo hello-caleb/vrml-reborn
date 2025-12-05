@@ -1,0 +1,113 @@
+#VRML V2.0 utf8
+# Emissive Color Demonstration
+
+# No glow (left)
+Transform {
+  translation -3 1 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+    }
+  ]
+}
+
+# Subtle glow (center-left)
+Transform {
+  translation -1 1 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.3 0
+          emissiveColor 0.3 0.1 0
+        }
+      }
+    }
+  ]
+}
+
+# Medium glow (center-right)
+Transform {
+  translation 1 1 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.6 0
+          emissiveColor 0.6 0.3 0
+        }
+      }
+    }
+  ]
+}
+
+# Maximum glow (right)
+Transform {
+  translation 3 1 0
+  children [
+    Shape {
+      geometry Sphere { radius 0.6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0.8 0
+          emissiveColor 1 0.6 0
+        }
+      }
+    }
+  ]
+}
+
+# Ground
+Transform {
+  translation 0 -0.2 0
+  children [
+    Shape {
+      geometry Box { size 10 0.4 6 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.1 0.1 0.12
+        }
+      }
+    }
+  ]
+}
+```
+
+---
+
+## 📝 **Prompt for Other AIs to Generate .WRL Files**
+```
+Create a VRML 2.0 (.wrl) file that demonstrates 3D shapes and materials. 
+
+Requirements:
+- Start with exactly: #VRML V2.0 utf8
+- Use Transform nodes with translation for positioning
+- Include Shape nodes with:
+  - geometry: Box, Sphere, Cylinder, or Cone
+  - appearance/material with diffuseColor (RGB 0-1)
+- Keep it simple: 3-5 objects maximum
+- Use clean spacing and valid VRML 2.0 syntax
+
+Example structure:
+Transform {
+  translation x y z
+  children [
+    Shape {
+      geometry Sphere { radius 0.5 }
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+    }
+  ]
+}
+
+Create a small scene with a theme (e.g., "solar system", "forest", "city"). Make positioning intentional and visually clear.

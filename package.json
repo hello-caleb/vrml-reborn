@@ -6,20 +6,26 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest --run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "aframe": "^1.5.0",
-    "aframe-react": "^4.4.0"
+    "aframe-react": "^4.4.0",
+    "three": "^0.160.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/aframe": "^1.2.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "@vitest/ui": "^2.1.0",
+    "fast-check": "^3.22.0",
     "typescript": "^5.5.3",
-    "vite": "^5.4.2"
+    "vite": "^5.4.2",
+    "vitest": "^2.1.0"
   }
 }
